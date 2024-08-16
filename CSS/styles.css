@@ -10,6 +10,9 @@ Bottom Navigation Color: A62D00
 Top Navigation Color:#24331A  
 */
 
+/*
+Base for the Type Scale: 16px for the text and 50px for the header, based on the 1.618 golden ratio. 
+ */
 /* General Styling */
 /* For body */
 #background{
@@ -17,12 +20,82 @@ Top Navigation Color:#24331A
     margin:0px 30px 0px;
 }
 
-/* For H1 */
+/* This is adding grid to website. These are the classes that I will be using for this*/
+
+.grid_container{
+    display:grid;
+    grid-template-areas: 
+    "header header header header"
+    "nav nav nav nav"
+    "main main main main"
+    "footer footer footer footer"
+    ;
+
+
+}
+.header{
+    grid-area:header;
+}
+
+.nav{
+    grid-area:nav;
+}
+
+.main{
+    grid-area:main;
+}
+
+.footer{
+    grid-area:footer;
+}
+
+/* putting my images into the columns */
+.flag{
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start:1;
+    grid-column-end:2;
+
+    z-index: 3;
+}
+
+#symbol2{
+    grid-row-start:4;
+    grid-row-end:5;
+    grid-column-start:-3;
+    grid-column-end:-2;
+    z-index:3;
+}
+
+/* grid for menu */
+
+.grid{
+    display:grid;
+    grid-template-areas: 
+    "plates noodles apps"
+    "beef rice extra"
+    "drinks pork soup"
+    ;
+
+    /* grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); */
+
+    grid-gap: 10px;
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+p{
+    font-family: "Farsan";
+    /* Added the based of all of the mulitplication for calc */
+    font-size: calc(3.125em / 1.618);
+    margin: 10px 70fpx 10px;
+}
+/* For H1. Added calc */
 #truckName{
 
     font-family: "Noto Sans Palmyrene", sans-serif;
     color:#0015A6;
-    font-size: 4.7em;
+    font-size: calc(1.931em * 1.618 * 1.618*1.618);
     padding-top:120px;
     padding-left:70px;
 }
@@ -36,9 +109,8 @@ align-content: center;
 border-bottom: 3px solid #1a1d33;
 }
 
-.omma{
-    margin-left: 4em;
-}
+
+
 /* For Top Navigation */
 #top-nav-item1{
     border-right: 3px solid #1a1d33;
@@ -50,14 +122,15 @@ border-bottom: 3px solid #1a1d33;
     padding-left: 4px;
     padding-right: 4px;
 }
-/* #top-nav-item:last-child{
-    border-right:0px;
-} */
-/* Styling the exact nav item */
+
+#top-nav-item3{
+    padding-left: 4px;
+}
+
 #top-nav a{
     color:#24331a;
     text-decoration: none;
-    font-size: 1.6em;
+    font-size: calc(2.62em/ 1.618) ;
     font-family: Shantell Sans, Cursive;
 }
 #top-nav{
@@ -70,22 +143,31 @@ border-bottom: 3px solid #1a1d33;
 }
 
 
-/* H1 header */
+/* header */
+
 #h2header{
     font-family: Lumanosimo, Cursive;
-    font-size: 2.3em;
+    font-size: calc(1.931em * 1.618 * 1.618);
     text-align: center;
 }
 
+#h3header{
+    font-family: shantell sans;
+    font-size: calc(1.931em * 1.618 );
+    text-align: center;
+}
 /* Figure */
 
-#symbol-item a{
-    color:#24331a;
+figcaption a{
+    color:#ffffff;
     text-decoration: none;
-    font-size: .6em;
-    font-family: Shantell Sans, Cursive; 
+
+    font-family: "Shantell Sans, Cursive"; 
     padding: 1px 3px 1px 3px;
 }
+
+
+
 /* For Footer Div */
 #footer{
     background-color:#1a1d33;
@@ -96,7 +178,7 @@ border-bottom: 3px solid #1a1d33;
 #bottom-nav a{
     color:#E89515;
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: calc(2.618em / 1.618);
     font-family: Shantell Sans, Cursive;
 }
 
@@ -113,16 +195,515 @@ border-bottom: 3px solid #1a1d33;
     justify-content: center;
     align-content: center;
     margin-top: 1.9em;
+    font-size: calc(1.931em/1.618);
 }
-/* Form editing */
+/* ---------------Form editing----------- */
 form{
-    margin-top: 20px;
+    background-color: #db5d2e;
+    margin:50px auto; /*Centers the form horizonatlly*/
+    width:100%;; /*Lets the form change width as needed */
+    max-width:480px; /*won't get as big as this*/
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 35%;
+
+
+}
+
+label{
+    font-size:calc(3.125em / 1.618);
+    font-family: "Farsan";
 }
 
 .message label{
     display:block;
+    font-size: calc(3.125em / 1.618);
 }
 
+.reservation{
+    display:flex;
+    flex-direction: row;
+    flex-grow:2;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Warning message styling */
+span.warning{
+    color:#0015A6;
+    font-size:calc(1.931em / 1.618);
+}
+
+p.warning{
+    color:#0015A6;
+    font-size:calc(3.125em / 1.618);
+}
+
+/* ===============================------card styling */
+.card-container{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+    
+}
+/* Taking the bullet off the ul item */
+ul li{
+    list-style: none;
+    font-family: Lumanosimo;
+}
+/* changing the background color and the text color */
+.plates, .noodles ,.apps,
+.beef, .rice, .extra,
+.drinks, .pork, .soup{
+    background-color: #24331a;
+    color: #E89515;
+} 
+
+/* images------ */
+
+/* logo */
+.omma{
+    margin-left: 4em;
+    width: 72%;
+}
+
+/* Symbols */
+
+/* images sizes */
+.grid img{
+    align-items: center;
+    width:100%;
+} 
+.soup img{
+    width:50%;
+}
+
+
+/* Moblie Scneen */
+
+@media screen and (max-width: 375px){
+    .flag img{
+        width:26vw;
+    }
+    .w3-container{
+        width:70%;
+    }
+    
+    .form {
+        width:70%;
+    }
+
+    .reservation{
+        flex-direction: column;
+    }
+
+    #h2header{
+        font-size: calc(1.931em);
+    }
+} 
+@media  screen and (max-width:633px) {
+    /* This is to hide my h1 when it is at 640px or less */
+    /* This section is my menu */
+    .truckname{
+        display:none;
+        
+    }
+
+    img{
+        display:block;
+    }
+    /* This is for the logo */
+    .omma{
+        margin:20px auto;
+        width:50%;
+        
+    }
+
+
+    .flag{
+        display:inherit;
+        margin-left: -2em;
+        margin-top: -.2em;
+    }
+
+    .flag a{
+        font-size: calc(0.618em/1.618);
+    }
+/* For the pattern image */
+    .pattern img{
+        width:calc(180px/2);
+        height:calc(174px/2);
+        margin-right: -2em;
+        margin-top: -.2em;
+    }
+    
+    .pattern a{
+        font-size: calc(0.618em/1.618);
+
+    }
+     /* Nav text size */
+    #top-nav a{
+        font-size: calc(1.931em / 1.618) ;
+        
+    }
+    /* Bottom elements */
+    #bottom-nav a{
+        font-size: calc(2.618em / 1.618 / 1.618);
+    }
+
+    #copyright{
+        font-size:calc(1.931em/1.618/1.618);
+    }
+    /* Header and body elements */
+    
+
+    #h3header{
+        font-size: calc(1.931em * 1.218 );
+    }
+
+    p{
+        font-size: calc(1.235em * 1.618);
+    }
+    /* The grid elements */
+    .grid_container{
+        display:grid;
+        z-index:10;
+        .header {
+            grid-area:header;
+            
+        }
+        
+        .nav{
+            grid-area:nav;
+        }
+        
+        .main{
+            grid-area:main;
+        }
+        
+        .footer{
+            grid-area:footer;
+        }
+        
+    }
+    .grid{
+        display:inherit;
+        grid-template-areas: 
+        "plates"
+        "noodles" 
+        "apps"
+        "beef" 
+        "rice" 
+        "extra"
+        "drinks" 
+        "pork"
+        "soup"
+        ;    
+    }
+
+}
+
+@media screen and (min-width:648px){
+     /* This is to hide my h1 when it is at 640px or less */
+    /* This section is my menu */
+    .truckname{
+        font-size: 1.931em;
+    }
+    /* Header Elements */
+    #header{
+        display:flex;
+        flex-direction: column;
+        margin:20px auto;
+        width:70%;
+    }
+    
+    /* .omma{
+        margin:20px auto;
+        width:50%;
+    } */
+    .flag img{
+        width:calc(270px/2);
+        height:calc(184px/2);
+    }
+
+    .flag{
+        display:inherit;
+        margin-left: -2em;
+        margin-top: -.2em;
+    }
+
+    .flag a{
+        font-size: calc(0.618em/1.618);
+    }
+    /* Form styling */
+    form{
+        margin:20px auto; /*Centers the form horizonatlly*/
+        width:90%;; /*Lets the form change width as needed */
+        max-width:380px; /*won't get as big as this*/
+        ;
+    
+    
+    }
+    /* Image styling */
+    .pattern img{
+        width:calc(180px/2);
+        height:calc(174px/2);
+        margin-right: -2em;
+        margin-top: -.2em;
+    }
+    
+    .pattern a{
+        font-size: calc(0.618em/1.618);
+
+    }
+     /* Nav text size */
+    #top-nav a{
+        font-size: calc(1.931em / 1.618) ;
+        
+    }
+
+    #bottom-nav a{
+        font-size: calc(2.618em / 1.618 / 1.618);
+    }
+    /* Copyright font change */
+    #copyright{
+        font-size:calc(1.931em/1.618/1.618);
+    }
+    /* h2, h3, p header change */
+    #h2header{
+        font-size: calc(1.931em * 1.618);
+    }
+
+
+
+    #h3header{
+        font-size: calc(1.931em * 1.218 );
+    }
+
+    p{
+        font-size: calc(1.235em * 1.618);
+    }
+    /* Grid stytling */
+    .grid_container{
+        display:grid;
+        z-index:10;
+        .header {
+            grid-area:header;
+            
+        }
+        
+        .nav{
+            grid-area:nav;
+        }
+        
+        .main{
+            grid-area:main;
+        }
+        
+        .footer{
+            grid-area:footer;
+        }
+        
+    }
+
+    .grid_container{
+        display:grid;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: repeat(4 , auto);
+        grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "main main main"
+        "footer footer footer"
+        ;
+    
+    
+    }
+    .grid{
+        display:inherit;
+        grid-template-areas: 
+        "plates"
+        "noodles" 
+        "apps"
+        "beef" 
+        "rice" 
+        "extra"
+        "drinks" 
+        "pork"
+        "soup"
+        ;    
+    }
+}
+/* An ib-between media q to keep things smooth */
+@media screen and (min-width:1057px){
+    #header{
+        margin:20px auto;
+        width:60%;
+    }
+}
+
+/* For desktops screens. This size is smaller on my moniters so there may be problems. This is what kept me from turing it in for many weeks */
+@media screen and (min-width:1280px) {
+    /*  Header*/
+    #header{
+        flex-direction: row;
+        margin:20px auto;
+        width:60%;
+    }
+    /* grid and grid container styling */
+    .grid_container{
+        display:grid;
+        z-index:10;
+        .header {
+            grid-area:header;
+            
+        }
+        
+        .nav{
+            grid-area:nav;
+        }
+        
+        .main{
+            grid-area:main;
+        }
+        
+        .footer{
+            grid-area:footer;
+        }
+        
+    }
+
+    .grid_container{
+        display:grid;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: repeat(4 , auto);
+        grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "main main main"
+        "footer footer footer"
+        ;
+    
+    
+    }
+    .grid{
+        display:grid;
+        grid-template-areas: 
+        "plates noodles " 
+        "apps beef" 
+        "rice extra"
+        "drinks pork"
+        "soup soup"
+        ;    
+    }
+}
+
+/* Havin to reapply the native styles for the large size but not the full size of my monitor. At close to full width, my monitor is 1880px wide. I don't know where I went wrong. I hope you see this, Mr.Torres
+and will be able to give me some assistance.  */
+@media screen and (min-width:1750px){
+    #header{
+        /* display: flex;
+        flex-direction: row; */
+        /* margin: 0 auto; */
+        width: 100%;
+    }
+    
+    .omma{
+        margin-left: 4em;
+        margin-right: -40em;
+        
+    }
+
+    .truckname{
+        padding:0px;
+    }
+    .grid_container{
+        display:grid;
+        z-index:10;
+        .header {
+            grid-area:header;
+            
+        }
+        
+        .nav{
+            grid-area:nav;
+        }
+        
+        .main{
+            grid-area:main;
+        }
+        
+        .footer{
+            grid-area:footer;
+        }
+        
+    }
+
+    .grid_container{
+        display:grid;
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: repeat(4 , auto);
+        grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "main main main"
+        "footer footer footer"
+        ;
+    
+    
+    }
+    .grid{
+        display:grid;
+        grid-template-areas: 
+        "plates noodles apps" 
+        "beef rice extra" 
+        "drinks pork soup"
+        ;    
+    }
+
+    .flag img{
+        width:calc(270px*1);
+        height:calc(184px*1);
+    }
+
+    .flag{
+        margin-left: 0em;
+        margin-top: 0em;
+    }
+
+    .flag a{
+        font-size: calc(1.618em/1.618);
+    }
+
+    .pattern img{
+        width:calc(180px*1);
+        height:calc(174px*1);
+        margin-right: 0em;
+        margin-top: 0em;
+    }
+
+    .pattern a{
+        font-size: calc(1.618em/1.618);
+    }
+
+
+    #bottom-nav a{
+        font-size: calc(2.618em / 1.618);
+    }
+
+    #copyright{
+        font-size:calc(1.931em/1.618);
+    }
+
+    .form{
+        margin-right:-100px;
+    }
+
+    #top-nav a{
+        font-size: calc(2.62em/ 1.618);
+    }
+}
